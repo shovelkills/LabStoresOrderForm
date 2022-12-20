@@ -1,6 +1,9 @@
 import { useState } from "react"
+import { useOrdersContext } from "../hooks/useOrdersContext"
 
 const OrderForm = () =>{
+    const {dispatch} = useOrdersContext()
+
     const [department, setDepartment] = useState('')
     const [extension, setExtension] = useState('')
     const [date, setDate] = useState(new Date())   
@@ -31,6 +34,7 @@ const OrderForm = () =>{
             setNotes('')
             setError(null)
             console.log('new order added', json)
+            dispatch({type: 'CREATE_ORDER', payload: json})
         }
     }
 

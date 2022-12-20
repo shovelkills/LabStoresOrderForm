@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
+import { useOrdersContext } from "../hooks/useOrdersContext"
 
 //compoenents
 import OrderDetails from '../components/OrderDetails'
 import OrderForm from '../components/OrderForm'
 
 const Home = () =>{
-
-    const [orders, setOrders] = useState(null)
+    const {orders, dispatch} = useOrdersContext()
 
     useEffect(() =>{
         const fetchOrders = async() =>{
@@ -14,7 +14,7 @@ const Home = () =>{
             const json = await response.json()
 
             if (response.ok){
-                setOrders(json)
+                dispatch({type: 'SET_ORDERS', payload: json})
             }
         }
 
