@@ -9,6 +9,7 @@ const OrderForm = () =>{
     const [date, setDate] = useState(new Date())   
     const [notes, setNotes] = useState('') 
     const [error, setError] = useState(null)
+    const [emptyFields, setEmptyFields] = useState([])
 
     const handleSubmit = async (e) =>{
         e.preventDefault()
@@ -25,7 +26,8 @@ const OrderForm = () =>{
         const json = await response.json()
 
         if (!response.ok){
-            setError(json.error)    
+            setError(json.error)
+            setEmptyFields(json.emptyFields)    
         }
         if(response.ok){
             setDepartment('')
@@ -33,6 +35,7 @@ const OrderForm = () =>{
             setDate(new Date())
             setNotes('')
             setError(null)
+            setEmptyFields([])
             console.log('new order added', json)
             dispatch({type: 'CREATE_ORDER', payload: json})
         }
@@ -47,18 +50,21 @@ const OrderForm = () =>{
                 type="text"
                 onChange={(e) => setDepartment(e.target.value)}
                 value={department}
+                className={emptyFields.includes('department') ? 'error' : ''}
             />
             <label>Extension</label>
             <input 
                 type="number"
                 onChange={(e) => setExtension(e.target.value)}
                 value={extension}
+                className={emptyFields.includes('extension') ? 'error' : ''}
             />
             <label>Date</label>
             <input 
                 type="date"
                 onChange={(e) => setDate(e.target.value)}
                 value={date}
+                className={emptyFields.includes('date') ? 'error' : ''}
             />
             <label>Notes</label>
             <input 

@@ -24,6 +24,25 @@ const getOrder = async (req, res) =>{
 //create order
 const createOrder = async(req, res) =>{
     const {department, extension, date, notes} = req.body
+
+    let emptyFields = []
+
+    if (!department){
+        emptyFields.push('department')
+    }
+
+    if (!extension){
+        emptyFields.push('extension')
+    }
+
+    if (!date){
+        emptyFields.push('date')
+    }
+
+    if (emptyFields.length > 0){
+        return res.status(400).json({ error: 'Please fill in all the required fields', emptyFields})
+    }
+
     try{
         const order = await Order.create({department, extension, date, notes})
         res.status(200).json(order)

@@ -1,5 +1,7 @@
 import { useOrdersContext } from "../hooks/useOrdersContext"
 
+import formatDistanceToNow from 'date-fns/formatDistanceToNow'
+
 const OrderDetails = ({ order }) =>{
 
     const { dispatch } = useOrdersContext()
@@ -19,7 +21,7 @@ const OrderDetails = ({ order }) =>{
         <div className="order-details">
             <h4>{order.department}</h4>
             <p><strong>Extension: </strong>{order.extension}</p>
-            <p><strong>Date: </strong>{order.date}</p>
+            <p><strong>Date: </strong>{formatDistanceToNow(new Date(order.date), {addSuffix: true})}</p>
             <span onClick={handleClick}>delete</span>
         </div>
     )
