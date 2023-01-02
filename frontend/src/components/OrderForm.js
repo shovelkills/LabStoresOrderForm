@@ -25,7 +25,7 @@ const OrderForm = () =>{
         const json = await response.json()
 
         if (!response.ok){
-            setError(json.error)
+            setError(json.error)    
         }
         if(response.ok){
             setDepartment('')
