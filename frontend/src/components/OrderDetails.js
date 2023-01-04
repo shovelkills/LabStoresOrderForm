@@ -1,6 +1,13 @@
 import { useOrdersContext } from "../hooks/useOrdersContext"
 
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
+
 
 const OrderDetails = ({ order }) =>{
 
@@ -19,37 +26,21 @@ const OrderDetails = ({ order }) =>{
     }
 
     return(
-        //Order detail display 
-        <>
-        <button class="accordion"> <h4>{order.department}</h4> </button>
-            <div className="order-details">
-                <h4>{order.department}</h4>
-                <p><strong>Extension: </strong>{order.extension}</p>
-                <p><strong>Date: </strong>{formatDistanceToNow(new Date(order.date), {addSuffix: true})}</p>
-                <span onClick={handleClick}>delete</span>
-            </div>
-
-        <script type="text/javascript">
-
-            let acc = document.getElementsByClassName("accordion");
-            let i;
-
-            for (i = 0; i < acc.length; i++){
-                acc[i].addEventListener("click", function(){
-                    this.classList.toggle("active");
-
-                    var panel = this.nextElementSibling;
-                    if (panel.style.display === "block"){
-                        panel.style.display = "none";
-                    }else{
-                        panel.style.display = "block";
-                    }
-                })
-            }
-
-        </script>
-        </>
-        
+        //Order detail display
+        <div className="order-details">
+            <Accordion>
+            <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
+                <Typography><h4>{order.department}</h4></Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+                <Typography>
+                    <p><strong>Extension: </strong>{order.extension}</p>
+                    <p><strong>Date: </strong>{formatDistanceToNow(new Date(order.date), {addSuffix: true})}</p>
+                    <span onClick={handleClick}>delete</span>
+                </Typography>
+            </AccordionDetails>
+            </Accordion>
+        </div>
     )
 }
 export default OrderDetails
