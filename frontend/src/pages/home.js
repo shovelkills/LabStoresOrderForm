@@ -7,7 +7,7 @@ import OrderForm from '../components/OrderForm'
 
 const Home = () =>{
     const {orders, dispatch} = useOrdersContext()
-
+    //Gets the data from the database and puts it in json format
     useEffect(() =>{
         const fetchOrders = async() =>{
             const response = await fetch('/api/orders')
