@@ -1,5 +1,6 @@
 import { useOrdersContext } from "../hooks/useOrdersContext"
 
+
 import { 
     Accordion,
     AccordionSummary,
@@ -9,11 +10,12 @@ import {
  import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
-
+import OrderDetailsItem from "./OrderDetailsItem.js"
 
 const OrderDetails = ({ order }) =>{
 
     const { dispatch } = useOrdersContext()
+    let count = 0;
 
     //Function to delete data
     const handleClick = async () =>{
@@ -27,14 +29,25 @@ const OrderDetails = ({ order }) =>{
         }
     }
 
+
+    const Orderdetail = () =>{
+        return(
+            <div className="order-details">
+                <h4>{order.information.department}</h4>
+                <p><strong>Extension: </strong>{order.information.extension}</p>
+                <p><strong>Date: </strong>{formatDistanceToNow(new Date(order.information.date), {addSuffix: true})}</p>
+                {Object.values(order.items).map((field, index) => (
+                        <OrderDetailsItem key = {index} item = {field}/>
+                ))}
+                <span onClick={handleClick}>delete</span>
+                
+            </div>
+        )
+    }
+
+
     return(
-        //Order detail display
-        <div className="order-details">
-            <h4>{order.department}</h4>
-            <p><strong>Extension: </strong>{order.extension}</p>
-            <p><strong>Date: </strong>{formatDistanceToNow(new Date(order.date), {addSuffix: true})}</p>
-            <span onClick={handleClick}>delete</span>
-        </div>
+        <Orderdetail/>
     );
 }
 export default OrderDetails

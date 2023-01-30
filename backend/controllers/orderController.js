@@ -23,7 +23,7 @@ const getOrder = async (req, res) =>{
 }
 //create order
 const createOrder = async(req, res) =>{
-    const {information, expiryItems, items} = req.body
+    const {information, items} = req.body
 
 
     let emptyFields = []
@@ -45,7 +45,7 @@ const createOrder = async(req, res) =>{
     } */
 
     try{
-        const order = await Order.create({information, expiryItems, items})
+        const order = await Order.create({information, items})
         res.status(200).json(order)
     }catch(error){
         res.status(400).json({error: error.message})

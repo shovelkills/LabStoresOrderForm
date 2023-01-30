@@ -32,27 +32,6 @@ const expiryItemSchema = new Schema({
     },
 })
 
-const expiryItemsSchema = new Schema ({
-    expiryitem1:{
-        type: expiryItemSchema, 
-    },
-    expiryitem2:{
-        type: expiryItemSchema, 
-    },
-    expiryitem3:{
-        type: expiryItemSchema, 
-    },
-    expiryitem4:{
-        type: expiryItemSchema, 
-    },
-    expiryitem5:{
-        type: expiryItemSchema, 
-    },
-    expiryNotes:{
-        type: String,
-    },
-})
-
 const itemSchema = new Schema ({
     name:{
         type:String,
@@ -62,6 +41,7 @@ const itemSchema = new Schema ({
         default: 0,
     }
 })
+
 const itemsSchema = new Schema ({
     item1:{
         type: itemSchema,
@@ -78,6 +58,21 @@ const itemsSchema = new Schema ({
     item5:{
         type: itemSchema,
     },
+    expiryitem1:{
+        type: expiryItemSchema, 
+    },
+    expiryitem2:{
+        type: expiryItemSchema, 
+    },
+    expiryitem3:{
+        type: expiryItemSchema, 
+    },
+    expiryitem4:{
+        type: expiryItemSchema, 
+    },
+    expiryitem5:{
+        type: expiryItemSchema, 
+    },
     notes:{
         type: String,
     },
@@ -89,9 +84,6 @@ const orderSchema = new Schema({
     information:{
         type: informationSchema, 
         required: true,
-    },
-    expiryItems:{
-        type: Object,
     },
     items:{
         type: Object,

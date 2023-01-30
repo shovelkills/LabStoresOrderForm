@@ -22,7 +22,7 @@ const Home = () =>{
     }, [])
 
     return(
-        <div className="home">
+        <div className="home">  
             <div className="orders">
                 {orders && orders.map((order) =>(
                     <OrderDetails key={order._id} order={order}/>
