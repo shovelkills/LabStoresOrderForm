@@ -28,17 +28,52 @@ const OrderDetails = ({ order }) =>{
             dispatch({type: 'DELETE_ORDER', payload: json})
         }
     }
+    //Returns normal Items
+    const ItemOrders = () => {
+        
+        const Items = (<div className="Items">
+            {Object.values(order.items).map((field, index) => (
+            <OrderDetailsItem key = {index} item = {field}/>
+        ))}
+        </div>)
+        
+        return(
+            Items
+        )
+    }
+    //Returns imtes with expiry dates
+    const ExpiryItemsOrders = () => {
+        const ExpiryItems = (<div className="ExpiryItems">
+            {Object.values(order.expiryItems).map((field, index) => (
+            <OrderDetailsItem key = {index} item = {field}/>
+        ))}
+        </div>)
+
+        return(
+            ExpiryItems
+        )
+
+    }
+
+    const Orderinformation = () => {
+        return(
+            <div className="Information">
+                <h4>{order.information.department}</h4>
+                <p><strong>Extension: </strong>{order.information.extension}</p>
+                <p><strong>Date: </strong>{formatDistanceToNow(new Date(order.information.date), {addSuffix: true})}</p>
+            </div>
+        )
+    }
 
 
     const Orderdetail = () =>{
         return(
             <div className="order-details">
-                <h4>{order.information.department}</h4>
-                <p><strong>Extension: </strong>{order.information.extension}</p>
-                <p><strong>Date: </strong>{formatDistanceToNow(new Date(order.information.date), {addSuffix: true})}</p>
-                {Object.values(order.items).map((field, index) => (
-                        <OrderDetailsItem key = {index} item = {field}/>
-                ))}
+                <Orderinformation />
+                <div className="itemsContainer">
+                    <ItemOrders />
+                    <ExpiryItemsOrders />
+                </div>
                 <span onClick={handleClick}>delete</span>
                 
             </div>

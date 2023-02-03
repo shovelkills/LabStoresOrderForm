@@ -1,22 +1,23 @@
 
 
 const OrderDetailsItem = ({item})=>{
-    console.log(item.name)
+
+    
+
     if (item.date){
         return(
-        <div className="item">
+            
+        <div className="expiryitem">
             <h4>{item.name}</h4>
-            <p>{item.quantity}</p>
-            <p>{item.date}</p>
-            <p>It works</p>
+            <p><strong>Quantity: </strong> {item.quantity}</p>
+            <p><strong>Date: </strong> {item.date.replace('-', '/').split('T')[0].replace('-', '/')}</p>
         </div>
         )
     } else{
         return(
             <div className="item">
                 <h4>{item.name}</h4>
-                <p>{item.quantity}</p>
-                <p>It works</p>
+                <p><strong>Quantity: </strong> {item.quantity}</p>
             </div>
             )
     }
