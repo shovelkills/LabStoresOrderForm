@@ -12,34 +12,60 @@ const OrderForm = () =>{
     const [emptyFields, setEmptyFields] = useState([])
 
     const [item1, setItem1] = useState({
-        "name": "item1"
+        "name": "item1",
+        "quantity": 0
     })
     const [item2, setItem2] = useState({
-        "name": "item2"
+        "name": "item2",
+        "quantity": 0
+        
     })
     const [item3, setItem3] = useState({
-        "name": "item3"
+        "name": "item3",
+        "quantity": 0
     })
     const [item4, setItem4] = useState({
-        "name": "item4"
+        "name": "item4",
+        "quantity": 0
     })
     const [item5, setItem5] = useState({
-        "name": "item5"
+        "name": "item5",
+        "quantity": 0
     })
     const [item6, setItem6] = useState({
-        "name": "item6"
+        "name": "item6",
+        "quantity": 0
     })
 
     let items = {}
 
     
 
-    const [expiryItem1, setExpiryItem1] = useState({})
-    const [expiryItem2, setExpiryItem2] = useState({})
-    const [expiryItem3, setExpiryItem3] = useState({})
-    const [expiryItem4, setExpiryItem4] = useState({})
-    const [expiryItem5, setExpiryItem5] = useState({})
-    const [expiryItem6, setExpiryItem6] = useState({})
+    const [expiryItem1, setExpiryItem1] = useState({
+        "quantity": 0,
+        "date": "0"
+
+    })
+    const [expiryItem2, setExpiryItem2] = useState({
+        "quantity": 0,
+        "date": "0"
+    })
+    const [expiryItem3, setExpiryItem3] = useState({
+        "quantity": 0,
+        "date": "0"
+    })
+    const [expiryItem4, setExpiryItem4] = useState({
+        "quantity": 0,
+        "date": "0"
+    })
+    const [expiryItem5, setExpiryItem5] = useState({
+        "quantity": 0,
+        "date": "0"
+    })
+    const [expiryItem6, setExpiryItem6] = useState({
+        "quantity": 0,
+        "date": "0"
+    })
 
     let expiryItems = {}
 
@@ -179,6 +205,8 @@ const OrderForm = () =>{
                     type="number"
                     onChange={(e) => setExtension(e.target.value)}
                     value={extension}
+                    placeholder="00000"
+                    min="0"
                     className={emptyFields.includes('extension') ? 'error' : ''}
                 />
                 <label>Date</label>
@@ -191,67 +219,82 @@ const OrderForm = () =>{
                 <label>Notes</label>
                 <input 
                     type="text"
+                    placeholder="Write notes for order here"
                     onChange={(e) => setNotes(e.target.value)}
                     value={notes}
                 />
             </div>
             <div className="itemsForm">
-                <label>Item1</label>
+                <label>Item1:</label>
                 <input 
                     type="number"
                     name="item1"
                     onChange={addItem}
+                    defaultValue="0"
+                    min="0"
                     value={items.item1}
                 />
-                <label>Item2</label>
+                <label>Item2:</label>
                 <input 
                     type="number"
                     name="item2"
                     onChange={addItem}
+                    defaultValue="0"
+                    min="0"
                     value={items.item2}
                 />
-                <label>Item3</label>
+                <label>Item3:</label>
                 <input 
                     type="number"
                     name="item3"
                     onChange={addItem}
+                    defaultValue="0"
+                    min="0"
                     value={items.item3}
                 />
-                <label>Item4</label>
+                <label>Item4:</label>
                 <input 
                     type="number"
                     name="item4"
                     onChange={addItem}
+                    defaultValue="0"
+                    min="0"
                     value={items.item4}
                 />
-                <label>Item5</label>
+                <label>Item5:</label>
                 <input 
                     type="number"
                     name="item5"
                     onChange={addItem}
+                    defaultValue="0"
+                    min="0"
                     value={items.item5}
                 />
-                <label>Item6</label>
+                <label>Item6:</label>
                 <input 
                     type="number"
                     name="item6"
                     onChange={addItem}
+                    defaultValue="0"
+                    min="0"
                     value={items.item6}
                 />
             </div>
             <div className="expiryItemForm">
                 <div className="singleExpiryItem">
                     <div className="Quantity">
-                        <label>Expiry Item 1</label>
+                        <label>Expiry Item 1:</label>
                         <input 
                             type="number"
                             name="expiryItem1"
                             onChange={addExpiryItem}
+                            defaultValue="0"
+                            min="0"
                             value={expiryItem1.quantity}
                         />
                     </div>
                     <div className="Date">
-                        <label>Expiry Item 1 Date</label>
+                        <label>Expiry Item 1 Date:</label>
                         <input 
                             type="date"
                             name="expiryItem1Date"
@@ -262,16 +305,18 @@ const OrderForm = () =>{
                 </div>
                 <div className="singleExpiryItem">
                     <div className="Quantity">
-                        <label>Expiry Item 2</label>
+                        <label>Expiry Item 2:</label>
                         <input 
                             type="number"
                             name="expiryItem2"
                             onChange={addExpiryItem}
+                            defaultValue="0"
+                            min="0"
                             value={expiryItem2.quantity}
                         />
                     </div>
                     <div className="Date">
-                        <label>Expiry Item 2 Date</label>
+                        <label>Expiry Item 2 Date:</label>
                         <input 
                             type="date"
                             name="expiryItem2Date"
@@ -282,16 +327,18 @@ const OrderForm = () =>{
                 </div>
                 <div className="singleExpiryItem">
                     <div className="Quantity">
-                        <label>Expiry Item 3</label>
+                        <label>Expiry Item 3:</label>
                         <input 
                             type="number"
                             name="expiryItem3"
+                            defaultValue="0"
+                            min="0"
                             onChange={addExpiryItem}
                             value={expiryItem3.quantity}
                         />
                     </div>
                     <div className="Date">
-                        <label>Expiry Item 3 Date</label>
+                        <label>Expiry Item 3 Date:</label>
                         <input 
                             type="date"
                             name="expiryItem3Date"
@@ -302,16 +349,18 @@ const OrderForm = () =>{
                 </div>
                 <div className="singleExpiryItem">
                     <div className="Quantity">
-                        <label>Expiry Item 4</label>
+                        <label>Expiry Item 4:</label>
                         <input 
                             type="number"
                             name="expiryItem4"
+                            defaultValue="0"
+                            min="0"
                             onChange={addExpiryItem}
                             value={expiryItem4.quantity}
                         />
                     </div>
                     <div className="Date">
-                        <label>Expiry Item 4 Date</label>
+                        <label>Expiry Item 4 Date:</label>
                         <input 
                             type="date"
                             name="expiryItem4Date"
@@ -322,16 +371,18 @@ const OrderForm = () =>{
                 </div>
                 <div className="singleExpiryItem">
                     <div className="Quantity">
-                        <label>Expiry Item 5</label>
+                        <label>Expiry Item 5:</label>
                         <input 
                             type="number"
                             name="expiryItem5"
+                            defaultValue="0"
+                            min="0"
                             onChange={addExpiryItem}
                             value={expiryItem5.quantity}
                         />
                     </div>
                     <div className="Date">
-                        <label>Expiry Item 5 Date</label>
+                        <label>Expiry Item 5 Date:</label>
                         <input 
                             type="date"
                             name="expiryItem5Date"
@@ -342,16 +393,18 @@ const OrderForm = () =>{
                 </div>
                 <div className="singleExpiryItem">
                     <div className="Quantity">
-                        <label>Expiry Item 6</label>
+                        <label>Expiry Item 6:</label>
                         <input 
                             type="number"
                             name="expiryItem6"
+                            defaultValue="0"
+                            min="0"
                             onChange={addExpiryItem}
                             value={expiryItem6.quantity}
                         />
                     </div>
                     <div className="Date">
-                        <label>Expiry Item 6 Date</label>
+                        <label>Expiry Item 6 Date:</label>
                         <input 
                             type="date"
                             name="expiryItem6Date"

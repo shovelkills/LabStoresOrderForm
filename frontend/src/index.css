@@ -98,6 +98,21 @@ header a {
   font-size: 16px;
 }
 
+.itemsForm input{
+  display: block;
+}
+
 input.error{
   border: 1px solid var(--error)
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.singleExpiryItem{
+  margin: 5px 0px 5px;
+}
+

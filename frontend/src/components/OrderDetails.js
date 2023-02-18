@@ -60,7 +60,8 @@ const OrderDetails = ({ order }) =>{
             <div className="Information">
                 <h4>{order.information.department}</h4>
                 <p><strong>Extension: </strong>{order.information.extension}</p>
-                <p><strong>Date: </strong>{formatDistanceToNow(new Date(order.information.date), {addSuffix: true})}</p>
+                <p><strong>Date: </strong>{order.information.date.replace('-', '/').split('T')[0].replace('-', '/')}</p>
+                <p><strong>Time Since Order:</strong>{formatDistanceToNow(new Date(order.information.date), {addSuffix: true})}</p>
             </div>
         )
     }
