@@ -21,6 +21,17 @@ const getOrder = async (req, res) =>{
     }
     res.status(200).json(order)
 }
+
+const getExpiryOrder = async(req, res) =>{
+    const date = new Date()
+    const expiryOrders = await Order.find({createdAt: { $lt: date}}).sort({createdAt: -1})
+
+    if(!expiryOrders){
+        return res.status(400).json({error: 'No such order found pass date'})
+    }
+
+    res.status(200).json(expiryOrders)
+}
 //create order
 const createOrder = async(req, res) =>{
     const {information, items, expiryItems} = req.body
@@ -86,6 +97,7 @@ const updateOrder = async(req, res) =>{
 module.exports={
     getOrders,
     getOrder,
+    getExpiryOrder,
     createOrder,
     deleteOrder,
     updateOrder

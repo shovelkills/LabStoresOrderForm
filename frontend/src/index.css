@@ -116,3 +116,7 @@ input::-webkit-inner-spin-button {
   margin: 5px 0px 5px;
 }
 
+.expiryitemexpired p{
+  color:red;
+}
+

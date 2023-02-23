@@ -42,27 +42,33 @@ const OrderForm = () =>{
     
 
     const [expiryItem1, setExpiryItem1] = useState({
+        "name": "item7",
         "quantity": 0,
         "date": "0"
 
     })
     const [expiryItem2, setExpiryItem2] = useState({
+        "name": "item8",
         "quantity": 0,
         "date": "0"
     })
     const [expiryItem3, setExpiryItem3] = useState({
+        "name": "item9",
         "quantity": 0,
         "date": "0"
     })
     const [expiryItem4, setExpiryItem4] = useState({
+        "name": "item10",
         "quantity": 0,
         "date": "0"
     })
     const [expiryItem5, setExpiryItem5] = useState({
+        "name": "item11",
         "quantity": 0,
         "date": "0"
     })
     const [expiryItem6, setExpiryItem6] = useState({
+        "name": "item12",
         "quantity": 0,
         "date": "0"
     })
