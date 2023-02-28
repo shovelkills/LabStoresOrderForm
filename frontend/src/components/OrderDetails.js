@@ -1,14 +1,6 @@
 import { useOrdersContext } from "../hooks/useOrdersContext"
 
 
-import { 
-    Accordion,
-    AccordionSummary,
-    AccordionDetails,
-    Typography,
- } from '@mui/material'
- import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
-
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 import OrderDetailsItem from "./OrderDetailsItem.js"
 

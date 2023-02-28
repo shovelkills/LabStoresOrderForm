@@ -95,7 +95,7 @@ const OrderForm = () =>{
             "expiryItem3":expiryItem3,
             "expiryItem4":expiryItem4,
             "expiryItem5":expiryItem5,
-            "expiryItem6":expiryItem1
+            "expiryItem6":expiryItem6
         }
 
         const order = {information, items, expiryItems}
