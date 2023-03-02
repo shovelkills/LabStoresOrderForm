@@ -20,7 +20,7 @@ const Archives = () =>{
         }
 
         fetchOrders()
-    }, [])
+    }, [dispatch])
     //Returns differences in days
     const dateDiffinDays = (compareDate) =>{
         const currentDate = new Date()

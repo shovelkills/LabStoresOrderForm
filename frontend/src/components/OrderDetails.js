@@ -1,5 +1,5 @@
 import { useOrdersContext } from "../hooks/useOrdersContext"
-
+import { useAuthContext } from "../hooks/useAuthContext"
 
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 import OrderDetailsItem from "./OrderDetailsItem.js"
@@ -9,12 +9,16 @@ import OrderDetailsItem from "./OrderDetailsItem.js"
 const OrderDetails = (props) =>{
 
     const { dispatch } = useOrdersContext()
+    const {user} = useAuthContext()
     let count = 0;
 
     //Function to delete data
     const handleClick = async () =>{
         const response = await fetch('/api/orders/' + props.order._id, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers:{
+                'Authorization': `Bearer ${user.token}`,
+            }
         })
         const json = await response.json()
 

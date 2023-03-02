@@ -89,6 +89,10 @@ const orderSchema = new Schema({
     },
     expiryItems:{
         type: Object,
+    },
+    user_id:{
+        type:String,
+        required:true
     }
 }, {timestamps: true})
 module.exports = mongoose.model('Orders', orderSchema)

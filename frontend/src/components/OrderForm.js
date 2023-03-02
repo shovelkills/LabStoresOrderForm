@@ -1,8 +1,10 @@
 import { useState } from "react"
 import { useOrdersContext } from "../hooks/useOrdersContext"
+import { useAuthContext } from "../hooks/useAuthContext"
 
 const OrderForm = () =>{
     const {dispatch} = useOrdersContext()
+    const {user} = useAuthContext()
 
     const [department, setDepartment] = useState('')
     const [extension, setExtension] = useState('')
@@ -78,6 +80,10 @@ const OrderForm = () =>{
 
     const handleSubmit = async (e) =>{
         e.preventDefault()
+        if (!user){
+            setError('You must be logged in')
+            return
+        }
 
         const information = {department, extension, date, notes}
         items = {
@@ -104,7 +110,8 @@ const OrderForm = () =>{
             method: 'POST',
             body: JSON.stringify(order),
             headers:{
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
             }
         })
         const json = await response.json()
@@ -131,22 +138,22 @@ const OrderForm = () =>{
 
         switch(name){
             case "item1":
-                setItem1(values => ({...values, ["quantity"]: value}));
+                setItem1(values => ({...values, "quantity": value}));
                 break;
             case "item2":
-                setItem2(values => ({...values, ["quantity"]: value}));
+                setItem2(values => ({...values, "quantity": value}));
                 break;
             case "item3":
-                setItem3(values => ({...values, ["quantity"]: value}));
+                setItem3(values => ({...values, "quantity": value}));
                 break;
             case "item4":
-                setItem4(values => ({...values, ["quantity"]: value}));
+                setItem4(values => ({...values, "quantity": value}));
                 break;     
             case "item5":
-                setItem5(values => ({...values, ["quantity"]: value}));
+                setItem5(values => ({...values, "quantity": value}));
                 break;
             case "item6":
-                setItem6(values => ({...values, ["quantity"]: value}))
+                setItem6(values => ({...values, "quantity": value}))
         }
     }
 
@@ -156,39 +163,39 @@ const OrderForm = () =>{
 
         if (name.includes("1")){
             if (name.includes("Date")){
-                setExpiryItem1(values => ({...values, ["date"]: value}))
+                setExpiryItem1(values => ({...values, "date": value}))
             }else{
-                setExpiryItem1(values => ({...values, ["quantity"]: value}))
+                setExpiryItem1(values => ({...values, "quantity": value}))
             }
         }else if(name.includes("2")){
             if (name.includes("Date")){
-                setExpiryItem2(values => ({...values, ["date"]: value}))
+                setExpiryItem2(values => ({...values, "date": value}))
             }else{
-                setExpiryItem2(values => ({...values, ["quantity"]: value}))
+                setExpiryItem2(values => ({...values, "quantity": value}))
             }
         }else if(name.includes("3")){
             if (name.includes("Date")){
-                setExpiryItem3(values => ({...values, ["date"]: value}))
+                setExpiryItem3(values => ({...values, "date": value}))
             }else{
-                setExpiryItem3(values => ({...values, ["quantity"]: value}))
+                setExpiryItem3(values => ({...values, "quantity": value}))
             }
         }else if(name.includes("4")){
             if (name.includes("Date")){
-                setExpiryItem4(values => ({...values, ["date"]: value}))
+                setExpiryItem4(values => ({...values, "date": value}))
             }else{
-                setExpiryItem4(values => ({...values, ["quantity"]: value}))
+                setExpiryItem4(values => ({...values, "quantity": value}))
             }
         }else if(name.includes("5")){
             if (name.includes("Date")){
-                setExpiryItem5(values => ({...values, ["date"]: value}))
+                setExpiryItem5(values => ({...values, "date": value}))
             }else{
-                setExpiryItem5(values => ({...values, ["quantity"]: value}))
+                setExpiryItem5(values => ({...values, "quantity": value}))
             }
         }else{
             if (name.includes("Date")){
-                setExpiryItem6(values => ({...values, ["date"]: value}))
+                setExpiryItem6(values => ({...values, "date": value}))
             }else{
-                setExpiryItem6(values => ({...values, ["quantity"]: value}))
+                setExpiryItem6(values => ({...values, "quantity": value}))
             }
         }
     }

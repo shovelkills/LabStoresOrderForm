@@ -7,8 +7,12 @@ const {
     deleteOrder,
     updateOrder
 } = require('../controllers/orderController')
+const requireAuth = require('../middleware/requireAuth')
 
+//Require auth for all workout routes
 const router = express.Router()
+
+router.use(requireAuth)
 
 //Get all orders
 router.get('/', getOrders)
