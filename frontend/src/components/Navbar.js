@@ -32,9 +32,9 @@ const Navbar = () =>{
                         <h1>Login</h1>
                     </Link>
                     </div>)}
-                    <Link to="/archives">
+                    {user && (<Link to="/archives">
                     <h1>Archives</h1>
-                    </Link>
+                    </Link>)}
                 </nav>
             </div>
         </header>

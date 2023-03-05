@@ -230,7 +230,7 @@ const OrderForm = () =>{
                     className={emptyFields.includes('date') ? 'error' : ''}
                 />
                 <label>Notes</label>
-                <input 
+                <textarea 
                     type="text"
                     placeholder="Write notes for order here"
                     onChange={(e) => setNotes(e.target.value)}

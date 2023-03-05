@@ -92,14 +92,33 @@ header a {
 .itemsContainer{
 }
 
+.create{
+  background: #fff;
+  border-radius: 4px;
+  margin: 20px auto;
+  padding: 15px;
+
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+}
+
 .informationForm input{
   display: block;
   height: 30px;
   font-size: 16px;
+  width: 250px;
+  margin: 8px 0px;
+}
+
+.informationForm textarea{
+  display: block;
+  height: 50px;
+  width: 250px;
 }
 
 .itemsForm input{
   display: block;
+  width: 250px;
+  margin: 5px 0px;
 }
 
 input.error{
@@ -118,5 +137,24 @@ input::-webkit-inner-spin-button {
 
 .expiryitemexpired p{
   color:red;
+}
+
+.login, .signup {
+  width: 30%;
+  margin: 30px auto;
+  padding: 25px;
+  border-style: ridge;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+  background: #fff;
+
+}
+
+.login input, .signup input, .signup button{
+  display:block;
+  margin: 10px, 0px, 10px;
+}
+
+.nav link{ 
+  display:block;
 }
 
